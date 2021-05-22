@@ -1,0 +1,14 @@
+{
+    "_QPVersion": "0.1.1",
+    "id": "LevelStats",
+    "name": "Level Stats",
+    "version": "0.1.0",
+    "author": "ComputerElite, Laurie",
+    "packageId": "com.beatgames.beatsaber",
+    "packageVersion": "1.15.0",
+    "modFiles": [
+      "libLevelStats.so"
+    ],
+    "dependencies": [],
+    "fileCopies": []
+  }
