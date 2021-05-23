@@ -6,7 +6,7 @@ A mod which sends your level stats to a client.
 You can get some overlays [here](https://computerelite.github.io/tools/Level_Stats_Quest_Overlay/)
 
 ## For developers
-Example JSON which you get from `http://[IP]:3501
+Example JSON which you get from `http://[IP]:3501`
 
 ```json
 {
