@@ -22,6 +22,8 @@ public:
     float energy = 1.0f;
     int combo = 0;
     float percentage = 0.0f;
+    float bpm = 0.0f;
+    float njs = 0.0f;
     std::string songAuthor = "";
     std::string id = "";
     std::string mapper = "";
@@ -29,7 +31,8 @@ public:
     std::string rank = "";
     int difficulty = 0;
     int score = 0;
-    int timeLeft = 0;
+    int timePlayed = 0;
+    int totalTime = 0;
 
     LevelStatsManager(Logger& logger);
 };

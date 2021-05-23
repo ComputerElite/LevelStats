@@ -76,12 +76,19 @@ MAKE_HOOK_OFFSETLESS(SongStart, void,
 
 MAKE_HOOK_OFFSETLESS(RefreshContent, void, StandardLevelDetailView* self) {
     RefreshContent(self);
-    Il2CppObject* level = CRASH_UNLESS(il2cpp_utils::GetFieldValue(self, "_level"));
+    
+
+    
+    IBeatmapLevel* level = self->level;
     manager->levelName = to_utf8(csstrtostr((Il2CppString*) CRASH_UNLESS(il2cpp_utils::GetPropertyValue(level, "songName"))));
     manager->levelSub = to_utf8(csstrtostr((Il2CppString*)CRASH_UNLESS(il2cpp_utils::GetPropertyValue(level, "songSubName"))));
     manager->songAuthor = to_utf8(csstrtostr((Il2CppString*) CRASH_UNLESS(il2cpp_utils::GetPropertyValue(level, "songAuthorName"))));
     manager->id = to_utf8(csstrtostr((Il2CppString*)CRASH_UNLESS(il2cpp_utils::GetPropertyValue(level, "levelID"))));
+    bool CustomLevel = manager->id.find("custom_level_") != std::string::npos;
+    manager->njs = CustomLevel ? self->selectedDifficultyBeatmap->get_noteJumpMovementSpeed() : 0.0f;
     manager->mapper = to_utf8(csstrtostr((Il2CppString*) CRASH_UNLESS(il2cpp_utils::GetPropertyValue(level, "levelAuthorName"))));
+    manager->bpm = CRASH_UNLESS(il2cpp_utils::GetPropertyValue<float>(level, "beatsPerMinute"));
+    //manager->njs = (float) CRASH_UNLESS(il2cpp_utils::GetPropertyValue(level, "noteJumpMovementSpeed"));
 }
 
 MAKE_HOOK_OFFSETLESS(AudioUpdate, void, Il2CppObject* self) {
@@ -90,7 +97,8 @@ MAKE_HOOK_OFFSETLESS(AudioUpdate, void, Il2CppObject* self) {
     float time = CRASH_UNLESS(il2cpp_utils::RunMethodUnsafe<float>(self, "get_songTime"));
     float endTime = CRASH_UNLESS(il2cpp_utils::RunMethodUnsafe<float>(self, "get_songEndTime"));
 
-    manager->timeLeft = (int) (endTime - time);
+    manager->timePlayed = (int) time;
+    manager->totalTime = (int) endTime;
 }
 
 extern "C" void load() {

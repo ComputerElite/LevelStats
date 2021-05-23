@@ -44,11 +44,14 @@ std::string LevelStatsManager::constructResponse() {
     doc.AddMember("songAuthor", LevelStatsManager::songAuthor, alloc);
     doc.AddMember("difficulty", LevelStatsManager::difficulty, alloc);
     doc.AddMember("score", LevelStatsManager::score, alloc);
-    doc.AddMember("timeLeft", LevelStatsManager::timeLeft, alloc);
+    doc.AddMember("timePlayed", LevelStatsManager::timePlayed, alloc);
+    doc.AddMember("totalTime", LevelStatsManager::totalTime, alloc);
     doc.AddMember("id", LevelStatsManager::id, alloc);
     doc.AddMember("levelSub", LevelStatsManager::levelSub, alloc);
     doc.AddMember("mapper", LevelStatsManager::mapper, alloc);
     doc.AddMember("rank", LevelStatsManager::rank, alloc);
+    doc.AddMember("bpm", LevelStatsManager::bpm, alloc);
+    doc.AddMember("njs", LevelStatsManager::njs, alloc);
 
     // Convert the document into a string
     rapidjson::StringBuffer buffer;
